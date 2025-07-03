@@ -1,7 +1,63 @@
 
+-- 🔐 KEY SYSTEM GUI BY Mymlukfatwa
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "KeyGUI"
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 350, 0, 180)
+frame.Position = UDim2.new(0.5, -175, 0.5, -90)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+frame.BackgroundTransparency = 0.3
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundTransparency = 1
+title.Text = "🔐 Enter Key"
+title.TextSize = 20
+title.Font = Enum.Font.GothamBold
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+local textBox = Instance.new("TextBox", frame)
+textBox.Size = UDim2.new(0.9, 0, 0, 40)
+textBox.Position = UDim2.new(0.05, 0, 0.3, 0)
+textBox.PlaceholderText = "Enter your key here"
+textBox.BackgroundTransparency = 0.2
+textBox.Text = ""
+textBox.TextColor3 = Color3.fromRGB(255,255,255)
+textBox.Font = Enum.Font.Gotham
+textBox.TextSize = 16
+
+local submit = Instance.new("TextButton", frame)
+submit.Size = UDim2.new(0.5, 0, 0, 35)
+submit.Position = UDim2.new(0.25, 0, 0.7, 0)
+submit.Text = "✔ Submit"
+submit.BackgroundColor3 = Color3.fromRGB(50, 150, 255)
+submit.TextColor3 = Color3.fromRGB(255, 255, 255)
+submit.TextSize = 18
+submit.Font = Enum.Font.GothamBold
+submit.BackgroundTransparency = 0.1
+submit.BorderSizePixel = 0
+
+submit.MouseButton1Click:Connect(function()
+    local inputKey = textBox.Text
+    if inputKey == "mym" then
+        gui:Destroy()
+        loadMainGUI()
+    else
+        submit.Text = "❌ Salah!"
+        wait(1)
+        submit.Text = "✔ Submit"
+    end
+end)
+
+
+
 -- BlueberriezHub1.3.lua by mymlukfatwa
 
-local correctKey = "blue123"
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local function makeKavoTransparent()
