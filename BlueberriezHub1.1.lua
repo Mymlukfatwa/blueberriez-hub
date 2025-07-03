@@ -12,6 +12,26 @@ local function makeKavoTransparent()
     end
 end
 
+function loadMainGUI()
+    local KeyWindow = Library.CreateLib("🔐 Blueberriez Key", "DarkTheme")
+    local KeyTab = KeyWindow:NewTab("Key")
+    local KeySection = KeyTab:NewSection("Masukkan Key")
+
+    KeySection:NewTextBox("Masukkan Key", "Contoh: blue123", function(input)
+        if input == correctKey then
+            Library:Notify("✅ Key Benar!", "Membuka GUI...", 3)
+            wait(1)
+            KeyWindow:Destroy()
+            showMainGUI()
+            makeKavoTransparent()
+        else
+            Library:Notify("❌ Key Salah!", "Coba lagi", 3)
+        end
+    end)
+
+    makeKavoTransparent()
+end
+
 local button = Instance.new("ImageButton")
 button.Size = UDim2.new(0, 60, 0, 60)
 button.Position = UDim2.new(0, 20, 0, 20)
@@ -22,27 +42,10 @@ button.Active = true
 button.Parent = game.CoreGui
 
 button.MouseButton1Click:Connect(function()
-    button.Visible = false
-    local KeyWindow = Library.CreateLib("🔐 Blueberriez Key", "DarkTheme")
-    local KeyTab = KeyWindow:NewTab("Key")
-    local KeySection = KeyTab:NewSection("Masukkan Key")
-
-    KeySection:NewTextBox("Masukkan Key", "Contoh: blue123", function(input)
-        if input == correctKey then
-            Library:Notify("✅ Key Benar!", "Membuka GUI...", 3)
-            wait(1)
-            KeyWindow:Destroy()
-            loadMainGUI()
-            makeKavoTransparent()
-        else
-            Library:Notify("❌ Key Salah!", "Coba lagi", 3)
-        end
-    end)
-
-    makeKavoTransparent()
+    loadMainGUI()
 end)
 
-function loadMainGUI()
+function showMainGUI()
     local Window = Library.CreateLib("💙 Blueberriez Hub", "DarkTheme")
 
     getgenv().autofarm = false
@@ -173,5 +176,8 @@ function loadMainGUI()
         end
     end)
 
-    Library:Notify("Blueberriez Hub berhasil dimuat!", "Versi 1.0", 5)
+    Library:Notify("Blueberriez Hub berhasil dimuat!", "Versi 1.2", 5)
 end
+
+-- 👇 Buka GUI otomatis di awal
+loadMainGUI()
