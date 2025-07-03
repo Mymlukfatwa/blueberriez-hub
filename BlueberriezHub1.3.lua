@@ -1,5 +1,5 @@
 
--- 🔐 KEY SYSTEM GUI BY Mymlukfatwa
+-- 🔐 KEY SYSTEM GUI BY mymlukfatwa
 local gui = Instance.new("ScreenGui", game.CoreGui)
 gui.Name = "KeyGUI"
 gui.ResetOnSpawn = false
